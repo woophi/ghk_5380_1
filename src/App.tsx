@@ -167,6 +167,9 @@ const FOND_TRADE_CONDITION_1 = 0.049;
 
 const SDUI_LINK =
   'alfabank://sdui_screen?screenName=InvestmentLongread&fromCurrent=true&endpoint=v1/invest-main-screen-view/investment-longread/55889%3flocation=AM%26campaignCode=gh5380_var1';
+if (LS.getItem(LSKeys.ShowThx, false)) {
+  window.location.replace(SDUI_LINK);
+}
 
 export const App = () => {
   const [loading, setLoading] = useState(false);
@@ -191,10 +194,6 @@ export const App = () => {
   const TOTAL_S_TRADE = 2 - (aumValueSM + tradeDurationValueSM + tradeVolumeValue);
 
   useEffect(() => {
-    if (LS.getItem(LSKeys.ShowThx, false)) {
-      window.location.replace(SDUI_LINK);
-    }
-
     if (!LS.getItem(LSKeys.UserId, null)) {
       LS.setItem(LSKeys.UserId, Date.now());
     }
